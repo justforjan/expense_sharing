@@ -8,12 +8,16 @@ import 'package:flutter/material.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
+  // Using dotenv might only be a good idea during development. In production it might be better to use --dart-define= arguments and then the Environment class
   await dotenv.load(fileName: '.env/development.env');
 
   await Supabase.initialize(
     url: dotenv.env['SUPABASE_URL'] ?? 'No URL',
     anonKey: dotenv.env['SUPABASE_ANON_KEY'] ?? 'No Key',
   );
+
+  // print("ANON KEY: ${dotenv.env['SUPABASE_ANON_KEY'] ?? 'No Key'}");
+  // print("URL: ${dotenv.env['SUPABASE_URL'] ?? 'No Key'}");
 
   runApp(MyApp());
 }
