@@ -1,4 +1,5 @@
 import 'package:expense_sharing/environment.dart';
+import 'package:expense_sharing/pages/login_or_register.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:expense_sharing/pages/auth_page.dart';
@@ -29,7 +30,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Firebase Testing',
+      title: 'Expense Sharing',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(
             seedColor: Colors.purple, surface: Colors.grey[300]),
@@ -37,9 +38,7 @@ class MyApp extends StatelessWidget {
         // textTheme: TextTheme(),
         useMaterial3: true,
       ),
-      home: LoginPage(
-        onTap: () {},
-      ),
+      home: AuthPage(),
     );
   }
 }

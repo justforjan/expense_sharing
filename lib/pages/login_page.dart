@@ -5,6 +5,7 @@ import 'package:expense_sharing/components/my_texfield.dart';
 import 'package:expense_sharing/services/auth_services.dart';
 import 'package:expense_sharing/services/regex_service.dart';
 import 'package:flutter/material.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 class LoginPage extends StatefulWidget {
   final Function()? onTap;
@@ -22,6 +23,9 @@ class _LoginPageState extends State<LoginPage> {
   // form
   final GlobalKey<FormState> _loginFormKey = GlobalKey<FormState>();
 
+  // Services
+  final AuthServices _authServices = AuthServices();
+
   // sign user in method
   void signUserIn() async {
     // show loading circly
@@ -34,15 +38,17 @@ class _LoginPageState extends State<LoginPage> {
     // try sign in
     try {
       if (_loginFormKey.currentState!.validate()) {
-        await AuthServices().signInWithEmailAndPassword(
-            emailController.text, passwordController.text);
+        await _authServices.signInWithEmailAndPassword(
+            emailController.text.trim(), passwordController.text.trim());
       }
       // pop the loading indicator
       if (mounted) {
         Navigator.pop(context);
       }
-    } on Exception catch (e) {
-      //TODO
+    } catch (e) {
+      if (mounted) {
+        Navigator.pop(context);
+      }
     }
     // } on FirebaseAuthException catch (e) {
     //   // pop the loading indicator
