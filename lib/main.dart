@@ -1,4 +1,5 @@
 import 'package:expense_sharing/environment.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:expense_sharing/pages/auth_page.dart';
 import 'package:expense_sharing/pages/login_page.dart';
@@ -6,12 +7,14 @@ import 'package:flutter/material.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  await dotenv.load(fileName: '.env/development.env');
+
   await Supabase.initialize(
-    url: Environment.supabaseUrl,
-    anonKey: Environment.supabaseAnonKey,
+    url: dotenv.env['SUPABASE_URL'] ?? 'No URL',
+    anonKey: dotenv.env['SUPABASE_ANON_KEY'] ?? 'No Key',
   );
-  print("Supabase Anon Key: ${Environment.supabaseAnonKey}");
-  print("Supabase URL: ${Environment.supabaseUrl}");
+
   runApp(MyApp());
 }
 
