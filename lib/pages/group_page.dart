@@ -8,14 +8,14 @@ import 'package:expense_sharing/services/database_services.dart';
 
 import 'package:flutter/material.dart';
 
-class HomePage extends StatefulWidget {
-  HomePage({super.key});
+class GroupPage extends StatefulWidget {
+  GroupPage({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<GroupPage> createState() => _GroupPageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _GroupPageState extends State<GroupPage> {
   final DatabaseServices _dbServices = DatabaseServices();
   final AuthServices _authServices = AuthServices();
 
