@@ -188,7 +188,7 @@ class _RegisterPageState extends State<RegisterPage> {
               ),
 
               // google sign in
-              const ThirdPartyAuth(),
+              ThirdPartyAuth(),
 
               const SizedBox(
                 height: 25,

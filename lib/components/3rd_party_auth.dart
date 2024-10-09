@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'square_tile.dart';
 
 class ThirdPartyAuth extends StatelessWidget {
-  const ThirdPartyAuth({super.key});
+  ThirdPartyAuth({super.key});
+
+  final _authServices = AuthServices();
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +14,7 @@ class ThirdPartyAuth extends StatelessWidget {
       children: [
         SquareTile(
           imagePath: "lib/images/google.png",
-          onTap: () => AuthServices().signInWithGoogle(),
+          onTap: () => _authServices.signInWithGoogle(),
         ),
       ],
     );

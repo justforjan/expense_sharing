@@ -5,6 +5,7 @@ import 'package:expense_sharing/components/my_texfield.dart';
 import 'package:expense_sharing/services/auth_services.dart';
 import 'package:expense_sharing/services/regex_service.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class LoginPage extends StatefulWidget {
@@ -171,7 +172,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
 
               // google sign in
-              const ThirdPartyAuth(),
+              ThirdPartyAuth(),
 
               const SizedBox(
                 height: 25,
